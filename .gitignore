@@ -15,7 +15,7 @@ $RECYCLE.BIN/
 *.msp
 
 #keil5
-/list/*
+list/
 *.bak
 *.uvopt
 
