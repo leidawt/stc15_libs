@@ -64,3 +64,13 @@ u8	GPIO_Inilize(u8 GPIO, GPIO_InitTypeDef *GPIOx)
 	}
 	return 0;	//³É¹¦
 }
+void GPIO_INIT(){
+	P0M0=0;
+	P0M1=0;
+	P1M0=0;
+	P1M1=0;
+	P2M0=0;
+	P2M1=0;
+	P3M0=0;
+	P3M1=0;
+}

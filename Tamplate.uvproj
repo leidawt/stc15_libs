@@ -294,7 +294,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>..\工程;.\ADC;.\LCD1602;.\SYS;.\USART</IncludePath>
+              <IncludePath>..\工程;.\ADC;.\LCD1602;.\SYS;.\USART;.\PWM</IncludePath>
             </VariousControls>
           </C51>
           <Ax51>
@@ -395,6 +395,16 @@
               <FileName>LCD1602.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\LCD1602\LCD1602.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>PWM</GroupName>
+          <Files>
+            <File>
+              <FileName>PWM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\PWM\PWM.c</FilePath>
             </File>
           </Files>
         </Group>
