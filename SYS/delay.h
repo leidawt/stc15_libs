@@ -5,5 +5,5 @@
 #include	"config.h"
 #include    "stdio.h"
 void  delay_ms(unsigned int ms);
-
+void Delay10us();
 #endif

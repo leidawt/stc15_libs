@@ -38,3 +38,11 @@ void  delay_ms(unsigned int ms)
 		  while(--i)	;   //14T per loop
      }while(--ms);
 }
+void Delay10us()		//@11.0592MHz
+{
+	unsigned char i;
+
+	_nop_();
+	i = 25;
+	while (--i);
+}

@@ -294,7 +294,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>..\工程;.\ADC;.\LCD1602;.\SYS;.\USART;.\PWM</IncludePath>
+              <IncludePath>..\工程;.\ADC;.\LCD1602;.\SYS;.\USART;.\PWM;.\LCD12864;.\DHT22</IncludePath>
             </VariousControls>
           </C51>
           <Ax51>
@@ -318,7 +318,7 @@
             <DataOverlaying>1</DataOverlaying>
             <OverlayString></OverlayString>
             <MiscControls></MiscControls>
-            <DisableWarningNumbers></DisableWarningNumbers>
+            <DisableWarningNumbers>16</DisableWarningNumbers>
             <LinkerCmdFile></LinkerCmdFile>
             <Assign></Assign>
             <ReserveString></ReserveString>
@@ -407,6 +407,22 @@
               <FilePath>.\PWM\PWM.c</FilePath>
             </File>
           </Files>
+        </Group>
+        <Group>
+          <GroupName>LCD12864</GroupName>
+          <Files>
+            <File>
+              <FileName>lcd12864.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\LCD12864\lcd12864.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>DHT11</GroupName>
+        </Group>
+        <Group>
+          <GroupName>DHT22</GroupName>
         </Group>
       </Groups>
     </Target>
