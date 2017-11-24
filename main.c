@@ -8,15 +8,13 @@ V0.1 2017.10.14 完成sys架构，LCD1602,adc，串口，BUG:串口波特率加倍错误
 v0.2 2017.10.14 修复 BUG:串口波特率加倍错误，完善注释
 v0.3 2017.10.18 add 6路PWM 控制器
 v0.4 2017.10.23 add LCD12864 DHT11 DHT22
+v0.5 2017.11.24 fix LCD12864
 *************************************************/
 #include	"config.h"
 #include	"delay.h"
 #include	"GPIO.h"
 //#include	  "USART1.h"
-//#include	  "adc.h"
-//#include    "LCD1602.h"
-//#include    "PWM.h"
-//#include    "LCD12864.H"
+
 /*************	本地常量声明	**************/
 
 

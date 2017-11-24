@@ -378,52 +378,6 @@
             </File>
           </Files>
         </Group>
-        <Group>
-          <GroupName>ADC</GroupName>
-          <Files>
-            <File>
-              <FileName>ADC.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\ADC\ADC.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>LCD1602</GroupName>
-          <Files>
-            <File>
-              <FileName>LCD1602.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\LCD1602\LCD1602.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>PWM</GroupName>
-          <Files>
-            <File>
-              <FileName>PWM.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\PWM\PWM.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>LCD12864</GroupName>
-          <Files>
-            <File>
-              <FileName>lcd12864.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\LCD12864\lcd12864.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>DHT11</GroupName>
-        </Group>
-        <Group>
-          <GroupName>DHT22</GroupName>
-        </Group>
       </Groups>
     </Target>
   </Targets>
