@@ -13,7 +13,7 @@ v0.5 2017.11.24 fix LCD12864
 #include	"config.h"
 #include	"delay.h"
 #include	"GPIO.h"
-//#include	  "USART1.h"
+#include	"USART1.h"
 
 /*************	本地常量声明	**************/
 
@@ -32,8 +32,8 @@ v0.5 2017.11.24 fix LCD12864
 /**********************************************/
 void main(void){
 	GPIO_INIT();//所有GPIO配置为准双向
-	//UART_config();//配置串口1,P30_P31,使用定时器2 默认波特率115200,8,1
-	//EA = 1;			   //开中断
+	UART_config();//配置串口1,P30_P31,使用定时器2 默认波特率115200,8,1
+	EA = 1;			   //开中断
 	while(1);	
 }
 

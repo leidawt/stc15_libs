@@ -13,7 +13,7 @@
 
 
 #include "USART1.h"
-
+#include "stdio.h"
 
 COMx_Define	COM1;
 u8	xdata TX1_Buffer[COM_TX1_Lenth];	//发送缓冲
@@ -123,12 +123,12 @@ void UART1_int (void) interrupt UART1_VECTOR
 	if(RI)
 	{
 		RI = 0;
-		if(COM1.B_RX_OK == 0)
-		{
-			if(COM1.RX_Cnt >= COM_RX1_Lenth)	COM1.RX_Cnt = 0;
-			RX1_Buffer[COM1.RX_Cnt++] = SBUF;
-			COM1.RX_TimeOut = TimeOutSet1;
-		}
+		
+		if(COM1.RX_Cnt >= COM_RX1_Lenth)	COM1.RX_Cnt = 0;
+		RX1_Buffer[COM1.RX_Cnt++] = SBUF;
+		COM1.RX_TimeOut = TimeOutSet1;
+		if(RX1_Buffer[COM1.RX_Cnt-1]=='\n')  COM1.B_RX_OK=1;
+		
 	}
 
 	if(TI)
@@ -167,4 +167,14 @@ char putchar(char c)
 	/* 发送一个字符 c 到UART1 */
 	TX1_write2buff(c);
 	return (c);
+}
+char _getkey (void){
+	static unsigned char cnt=0;
+	while(COM1.B_RX_OK!=1);
+	if(RX1_Buffer[cnt]=='\n'){
+		COM1.B_RX_OK=0;
+		cnt=0;
+		COM1.RX_Cnt=0;
+	}
+	return RX1_Buffer[cnt++];
 }

@@ -83,6 +83,7 @@ void TX2_write2buff(u8 dat);	//写入发送缓冲，指针+1
 void PrintString1(u8 *puts);
 void PrintString2(u8 *puts);
 void UART_config(void);
+extern COMx_Define	COM1;
 //void COMx_write2buff(COMx_Define *COMx, u8 dat);	//写入发送缓冲，指针+1
 //void PrintString(COMx_Define *COMx, u8 *puts);
 

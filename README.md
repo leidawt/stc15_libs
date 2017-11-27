@@ -43,12 +43,12 @@ SYS模块
 延时time个毫秒
 --------------
 
-delay_ms（time）；//time为unsigned int型
+delay_ms(time);*//time为unsigned int型*
 
 初始化IO
 --------
 
-GPIO_INIT();//所有GPIO配置为准双向
+GPIO_INIT();*//所有GPIO配置为准双向*
 
 USART模块
 =========
@@ -62,7 +62,18 @@ printf功能
 
 已配置好，可使用c语言printf()标准函数将信息打印到串口
 
-例如：printf(“hello world\\n”);
+例如：
+
+printf("hello world**\\n**");
+
+scanf()功能
+-----------
+
+使用c标准库函数来向单片机发送命令
+
+注意：stc isp 内串口对此实验显示可能不正确，字符串以\\n判定结束
+
+scanf("%4s %d",name,\&age);
 
 自动中断读写BUF（需要打开EA总开关） 
 ------------------------------------
@@ -70,6 +81,23 @@ printf功能
 TX1_Buffer //发送缓冲数组
 
 RX1_Buffer//接收缓冲数组
+
+实例
+----
+
+void usart_demo(){
+
+int age=0;
+
+unsigned char name[5]={"name"};
+
+printf("name age**\\n**");
+
+scanf("%4s %d",name,\&age);
+
+printf("name:%sage:%d**\\n**",name,age);
+
+}
 
 ADC模块
 =======
@@ -83,32 +111,43 @@ ADC模块
 
 参数ADC_IO:
 
-\#define ADC_P10 0x01 //IO引脚 P1.0
+\#define ADC_P10 0x01 *//IO引脚 P1.0*
 
-\#define ADC_P11 0x02 //IO引脚 P1.1
+\#define ADC_P11 0x02 *//IO引脚 P1.1*
 
-\#define ADC_P12 0x04 //IO引脚 P1.2
+\#define ADC_P12 0x04 *//IO引脚 P1.2*
 
-\#define ADC_P13 0x08 //IO引脚 P1.3
+\#define ADC_P13 0x08 *//IO引脚 P1.3*
 
-\#define ADC_P14 0x10 //IO引脚 P1.4
+\#define ADC_P14 0x10 *//IO引脚 P1.4*
 
-\#define ADC_P15 0x20 //IO引脚 P1.5
+\#define ADC_P15 0x20 *//IO引脚 P1.5*
 
-\#define ADC_P16 0x40 //IO引脚 P1.6
+\#define ADC_P16 0x40 *//IO引脚 P1.6*
 
-\#define ADC_P17 0x80 //IO引脚 P1.7
+\#define ADC_P17 0x80 *//IO引脚 P1.7*
 
-\#define ADC_P1_All 0xFF //IO所有引脚
+\#define ADC_P1_All 0xFF *//IO所有引脚*
 
 获取ADC转换值
 -------------
 
 结果为10位，int类型 1\~1024
 
-Get_ADC10bitResult(u8 channel); //channel = 0\~7
+Get_ADC10bitResult(u8 channel); *//channel = 0\~7*
 
 参数channel：0\~7分别对应通道P1.0-P1.7
+
+实例
+----
+
+unsigned int result=0;
+
+ADC_config(ADC_P10);*//初始化P10为ADC通道*
+
+result=Get_ADC10bitResult(0);*//获取P10通道ADC值*
+
+printf("ADC:%d**\\n**",result);
 
 LCD1602模块
 ===========
@@ -123,12 +162,14 @@ LCD1602模块
 
 函数：LCD1602_init();
 
+LCD1602_init();
+
 打印信息至LCD
 -------------
 
 本模块提供print_lcd()函数，使用方法与printf()完全相同,例如：
 
-print_lcd (“1+1=%d”,(int)2);
+print_lcd ("1+1=%d",(int)2);
 
 PWM模块
 =======
@@ -212,3 +253,24 @@ LCD12864模块
 void disp_string_LCD12864(unsigned char x,unsigned char y,unsigned char \*s);
 
 功能：显示一个字符串s到液晶 x：第x行，y：第y列，从第X行第Y列开始写
+
+实例
+----
+
+unsigned int adder=0;
+
+init_LCD12864();*//初始化LCD*
+
+print_lcd12864("1+1=%d**\\n**",(int)2);*//显示数字2*
+
+*//下面体现这钟的优势，写一个秒表，每秒加1*
+
+**while**(1){
+
+adder++;
+
+print_lcd12864("adder:%d**\\n**",adder);
+
+delay_ms(1000);
+
+}
