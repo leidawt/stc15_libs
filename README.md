@@ -274,3 +274,110 @@ print_lcd12864("adder:%d**\\n**",adder);
 delay_ms(1000);
 
 }
+
+KEY按键
+=======
+
+为一个带中断的按键模板
+
+初始化
+------
+
+void key_init();
+
+外部按键使用轻触开关，使用上拉电阻，以下程序配置为了下降沿触发
+
+外部中断引脚：
+
+INT0(P3.2)
+
+INT1(P3.3)
+
+INT2(P3.6)固定为下降沿触发
+
+INT3(P3.7)固定为下降沿触发
+
+INT4(P3.0)固定为下降沿触发
+
+中断服务
+--------
+
+修改位于KEY.c中的如下函数的*//你的代码*位置
+
+*/\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\* INT0中断函数
+\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*/*
+
+void Ext_INT0 (void) interrupt INT0_VECTOR *//进中断时已经清除标志*
+
+{
+
+delay_ms(10);
+
+**if**(P32==0){
+
+*//开始执行中断服务部分*
+
+*//你的代码*
+
+}
+
+}
+
+外部中断
+========
+
+外部中断配置函数
+
+注意：别忘记开启总中断开关EA
+
+配置函数
+--------
+
+EXTI_config(u8 EXTI_Mode,u8 EXTI_Polity,u8 EXTI_Interrupt,u8 EXT_chn) ;
+
+参数定义如下
+
+EXTI_Mode：中断方式
+
+可选值：
+
+EXT_MODE_RiseFall 0 //上升沿/下降沿中断
+
+EXT_MODE_Fall 1 //下降沿中断
+
+EXTI_Polity：中断优先级
+
+可选值：
+
+PolityLow 0 //低优先级中断
+
+PolityHigh 1 //高优先级中断
+
+EXTI_Interrupt：是否允许中断
+
+可选值
+
+ENABLE 1
+
+DISABLE 0
+
+EXT_chn：使能的外部中断通道
+
+可选值：
+
+EXT_INT0 0 //初始化外中断0
+
+EXT_INT1 1 //初始化外中断1
+
+EXT_INT2 2 //初始化外中断2
+
+EXT_INT3 3 //初始化外中断3
+
+EXT_INT4 4 //初始化外中断4
+
+实例
+----
+
+EXTI_config(EXT_MODE_Fall,PolityHigh,ENABLE,EXT_INT0);
+
+初始化配置INT0，下降沿触发，高优先级，使能中断
