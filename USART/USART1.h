@@ -16,6 +16,7 @@
 #define __USART_H	 
 
 #include	"config.h"
+#include "stdio.h"
 
 #define	COM_TX1_Lenth	40
 #define	COM_RX1_Lenth	40

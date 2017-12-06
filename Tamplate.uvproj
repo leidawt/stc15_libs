@@ -294,7 +294,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>..\工程;.\ADC;.\LCD1602;.\SYS;.\USART;.\PWM;.\LCD12864;.\DHT22;.\KEY;.\EXTI</IncludePath>
+              <IncludePath>..\工程;.\ADC;.\LCD1602;.\SYS;.\USART;.\PWM;.\LCD12864;.\DHT22;.\KEY;.\EXTI;.\DS1302;.\Runtime</IncludePath>
             </VariousControls>
           </C51>
           <Ax51>

@@ -381,3 +381,56 @@ EXT_INT4 4 //初始化外中断4
 EXTI_config(EXT_MODE_Fall,PolityHigh,ENABLE,EXT_INT0);
 
 初始化配置INT0，下降沿触发，高优先级，使能中断
+
+DS1302
+======
+
+DS1302模块是一个数字时钟，本模块提供其驱动
+
+接口定义在头文件中
+
+初始化
+------
+
+Ds1302Init();//init
+
+使用
+----
+
+Ds1302ReadTime();//读取值到缓冲
+
+结果存储在TIME[]数组中
+
+定义如下
+
+TIME[2] 时
+
+TIME[1] 分
+
+TIME[6] 年
+
+TIME[4] 月
+
+TIME[3] 日
+
+TIME[5] 1\~7 星期一\~星期日
+
+Runtime 执行时间测试
+====================
+
+本模块提供代码的执行时间测试，通过串口输出结果，使用串口1
+
+使用
+----
+
+\#include *"Runtime.h"*
+
+Runtime_init();
+
+Runtime_start();*//启动*
+
+*//被测试代码如下*
+
+delay_ms(1);
+
+Runtime_stop();*//结束*
