@@ -2,15 +2,15 @@
 #define __DS1302_H_
 
 //---包含头文件---//
-#include"config.h"
-#include<intrins.h>
+#include <intrins.h>
+#include "config.h"
 
 //---重定义关键词---//
 #ifndef uchar
 #define uchar unsigned char
 #endif
 
-#ifndef uint 
+#ifndef uint
 #define uint unsigned int
 #endif
 
@@ -26,6 +26,6 @@ void Ds1302Init();
 void Ds1302ReadTime();
 
 //---加入全局变量--//
-extern uchar TIME[7];	//加入全局变量
+extern uchar TIME[7];  //加入全局变量
 
 #endif

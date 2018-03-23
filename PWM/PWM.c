@@ -15,25 +15,25 @@ Description: stc15 6通道pwm模块
 // 返回: none.
 // 版本: V0.1, 2017-10-18
 //========================================================================
-void PWM_INIT(unsigned int pwm_duty){
-	P_SW2|=0x80;//使能扩展SFR
-	PWMCFG=0x00;//pwm配置初始电平，不触发adc
-	PWMFDCR&=~0x20;//关闭异常中断
-	PWMC=pwm_duty;//配置pwm周期
-	PWMCKS=0x0f;//选择输入时钟为1/16主时钟
-	PWM2T1=1;
-	PWM3T1=1;
-	PWM4T1=1;
-	PWM5T1=1;
-	PWM6T1=1;
-	PWM7T1=1;
-	PWM2T2=0;
-	PWM3T2=0;
-	PWM4T2=0;
-	PWM5T2=0;
-	PWM6T2=0;
-	PWM7T2=0;
-	P_SW2&=~0x80;
+void PWM_INIT(unsigned int pwm_duty) {
+    P_SW2 |= 0x80;     //使能扩展SFR
+    PWMCFG = 0x00;     // pwm配置初始电平，不触发adc
+    PWMFDCR &= ~0x20;  //关闭异常中断
+    PWMC = pwm_duty;   //配置pwm周期
+    PWMCKS = 0x0f;     //选择输入时钟为1/16主时钟
+    PWM2T1 = 1;
+    PWM3T1 = 1;
+    PWM4T1 = 1;
+    PWM5T1 = 1;
+    PWM6T1 = 1;
+    PWM7T1 = 1;
+    PWM2T2 = 0;
+    PWM3T2 = 0;
+    PWM4T2 = 0;
+    PWM5T2 = 0;
+    PWM6T2 = 0;
+    PWM7T2 = 0;
+    P_SW2 &= ~0x80;
 }
 //========================================================================
 // 函数: void PWM_CHN_ENABLE(unsigned char chn)
@@ -42,12 +42,12 @@ void PWM_INIT(unsigned int pwm_duty){
 // 返回: none.
 // 版本: V0.1, 2017-10-18
 //========================================================================
-void PWM_CHN_ENABLE(unsigned char chn){
-	P_SW2|=0x80;//使能扩展SFR
-	PWMCR|=1<<(chn-1);//使能第chn通道
-	PWMCR|=0x80;//总使能
-	P_SW2&=~0x80;
-	//PWMCR&=~0x80//关总使能
+void PWM_CHN_ENABLE(unsigned char chn) {
+    P_SW2 |= 0x80;            //使能扩展SFR
+    PWMCR |= 1 << (chn - 1);  //使能第chn通道
+    PWMCR |= 0x80;            //总使能
+    P_SW2 &= ~0x80;
+    // PWMCR&=~0x80//关总使能
 }
 //========================================================================
 // 函数: void pwm_port_remap(unsigned char chn, bit enable)
@@ -57,28 +57,35 @@ void PWM_CHN_ENABLE(unsigned char chn){
 // 返回: none.
 // 版本: V0.1, 2017-10-18
 //========================================================================
-void PWM_port_remap(unsigned char chn, bit enable){
-	switch(chn){
-		case 1:PWM2CR=0x08;
-			   if(!enable) PWM2CR=0;
-			   break;
-		case 2:PWM3CR=0x08;
-			   if(!enable) PWM3CR=0;
-			   break;
-		case 3:PWM4CR=0x08;
-			   if(!enable) PWM4CR=0;
-			   break;
-		case 4:PWM5CR=0x08;
-			   if(!enable) PWM5CR=0;
-			   break;
-		case 5:PWM6CR=0x08;
-			   if(!enable) PWM6CR=0;
-			   break;
-		case 6:PWM7CR=0x08;
-			   if(!enable) PWM7CR=0;
-			   break;
-		default:break;
-	}
+void PWM_port_remap(unsigned char chn, bit enable) {
+    switch (chn) {
+        case 1:
+            PWM2CR = 0x08;
+            if (!enable) PWM2CR = 0;
+            break;
+        case 2:
+            PWM3CR = 0x08;
+            if (!enable) PWM3CR = 0;
+            break;
+        case 3:
+            PWM4CR = 0x08;
+            if (!enable) PWM4CR = 0;
+            break;
+        case 4:
+            PWM5CR = 0x08;
+            if (!enable) PWM5CR = 0;
+            break;
+        case 5:
+            PWM6CR = 0x08;
+            if (!enable) PWM6CR = 0;
+            break;
+        case 6:
+            PWM7CR = 0x08;
+            if (!enable) PWM7CR = 0;
+            break;
+        default:
+            break;
+    }
 }
 
 //========================================================================
@@ -89,38 +96,45 @@ void PWM_port_remap(unsigned char chn, bit enable){
 // 返回: none.
 // 版本: V0.1, 2017-10-18
 //========================================================================
-void  PWM_set_ratio(unsigned int Duty_ration,unsigned char chn){
-	 switch(chn){
-		case 1:P_SW2|=0x80;//使能扩展SFR
-			   PWM2T1=Duty_ration;
-			   P_SW2&=~0x80;
-			   PWMCR|=1<<(chn-1);
-			   break;
-		case 2:P_SW2|=0x80;//使能扩展SFR
-			   PWM3T1=Duty_ration;
-			   P_SW2&=~0x80;
-			   PWMCR|=1<<(chn-1);
-			   break;
-		case 3:P_SW2|=0x80;//使能扩展SFR
-			   PWM4T1=Duty_ration;
-			   P_SW2&=~0x80;
-			   PWMCR|=1<<(chn-1);
-			   break;
-		case 4:P_SW2|=0x80;//使能扩展SFR
-			   PWM5T1=Duty_ration;
-			   P_SW2&=~0x80;
-			   PWMCR|=1<<(chn-1);
-			   break;
-		case 5:P_SW2|=0x80;//使能扩展SFR
-			   PWM6T1=Duty_ration;
-			   P_SW2&=~0x80;
-			   PWMCR|=1<<(chn-1);
-			   break;
-		case 6:P_SW2|=0x80;//使能扩展SFR
-			   PWM7T1=Duty_ration;
-			   P_SW2&=~0x80;
-			   PWMCR|=1<<(chn-1);
-			   break;
-		default:break;
-	}
+void PWM_set_ratio(unsigned int Duty_ration, unsigned char chn) {
+    switch (chn) {
+        case 1:
+            P_SW2 |= 0x80;  //使能扩展SFR
+            PWM2T1 = Duty_ration;
+            P_SW2 &= ~0x80;
+            PWMCR |= 1 << (chn - 1);
+            break;
+        case 2:
+            P_SW2 |= 0x80;  //使能扩展SFR
+            PWM3T1 = Duty_ration;
+            P_SW2 &= ~0x80;
+            PWMCR |= 1 << (chn - 1);
+            break;
+        case 3:
+            P_SW2 |= 0x80;  //使能扩展SFR
+            PWM4T1 = Duty_ration;
+            P_SW2 &= ~0x80;
+            PWMCR |= 1 << (chn - 1);
+            break;
+        case 4:
+            P_SW2 |= 0x80;  //使能扩展SFR
+            PWM5T1 = Duty_ration;
+            P_SW2 &= ~0x80;
+            PWMCR |= 1 << (chn - 1);
+            break;
+        case 5:
+            P_SW2 |= 0x80;  //使能扩展SFR
+            PWM6T1 = Duty_ration;
+            P_SW2 &= ~0x80;
+            PWMCR |= 1 << (chn - 1);
+            break;
+        case 6:
+            P_SW2 |= 0x80;  //使能扩展SFR
+            PWM7T1 = Duty_ration;
+            P_SW2 &= ~0x80;
+            PWMCR |= 1 << (chn - 1);
+            break;
+        default:
+            break;
+    }
 }
