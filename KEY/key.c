@@ -26,3 +26,34 @@ void Ext_INT0(void) interrupt INT0_VECTOR  //进中断时已经清除标志
         P20 = ~P20;
     }
 }
+#define Submit P00
+#define key1 P11
+#define key2 P13
+#define key3 P13
+
+unsigned char datas[3]={0};
+void mutiKeyDemo(void){
+	while(Submit==1){
+		if(key1==0){
+			delay_ms(hold_time);
+			if(key1==0){
+				datas[0]++;
+			}
+			while(key1==0);
+		}
+		if(key2==0){
+			delay_ms(hold_time);
+			if(key2==0){
+				datas[1]++;
+			}
+			while(key2==0);
+		}
+		if(key3==0){
+			delay_ms(hold_time);
+			if(key3==0){
+				datas[2]++;
+			}
+			while(key3==0);
+		}
+	}
+}

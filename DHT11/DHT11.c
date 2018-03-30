@@ -2,17 +2,17 @@
 #include "config.h"
 #include "delay.h"
 
-// unsigned char Sensor_Data_DHT11[5]={0x00,0x00,0x00,0x00,0x00};
+unsigned char Sensor_Data_DHT11[5]={0x00,0x00,0x00,0x00,0x00};
 /*
-uchar dht_t1=0,dht_t2=0; //依次为温度整数部分和温度小数部分
-uchar dht_d1=0,dht_d2=0; //依次为湿度整数部分和湿度小数部分
-uchar dht_chk=0; //和校验，可选择是否使用，具体参照数据手册
+依次为温度整数部分和温度小数部分
+依次为湿度整数部分和湿度小数部分
+和校验，可选择是否使用，具体参照数据手册
 */
-uchar dht_num = 0;  //用于while 循环中计数，超时则跳出循环
+unsigned char dht_num = 0;  //用于while 循环中计数，超时则跳出循环
 
-uchar dht_readat()  //接收一个8 位数据，先高位后低位
+unsigned char dht_readat()  //接收一个8 位数据，先高位后低位
 {
-    uchar i = 0, dat = 0;
+    unsigned char i = 0, dat = 0;
     for (i = 0; i < 8; i++) {
         dht_num = 2;
         while ((dht_dat == 0) && (dht_num++))
@@ -33,7 +33,7 @@ uchar dht_readat()  //接收一个8 位数据，先高位后低位
 }
 void getdat_DHT11()  //给DHT11 一个开始信号，然后读取一次数据，共五个8 位字节
 {
-    uchar i = 0;
+    unsigned char i = 0;
     dht_dat = 0;
     delay_ms(40);
     dht_dat = 1;  //单片机给起始脉冲信号

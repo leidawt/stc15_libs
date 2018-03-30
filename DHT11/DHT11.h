@@ -1,9 +1,10 @@
 #ifndef __DHT11_H
 #define __DHT11_H
-#define uchar unsigned char
-#define uint unsigned int
-unsigned char xdata Sensor_Data_DHT11[5];
+
+#define dht_dat P07  //用哪个I/O 口
+
+extern unsigned char Sensor_Data_DHT11[5];
 void getdat_DHT11();
 void init_DHT11();
-#define dht_dat P07  //用哪个I/O 口
+
 #endif
