@@ -311,7 +311,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>..\工程;.\ADC;.\LCD1602;.\SYS;.\USART;.\PWM;.\LCD12864;.\DHT22;.\KEY;.\EXTI;.\DS1302;.\Runtime;.\DHT11</IncludePath>
+              <IncludePath>..\工程;.\ADC;.\LCD1602;.\SYS;.\USART;.\PWM;.\LCD12864;.\DHT22;.\KEY;.\EXTI;.\DS1302;.\Runtime;.\DHT11;.\Global</IncludePath>
             </VariousControls>
           </C51>
           <Ax51>
@@ -387,6 +387,11 @@
               <FileName>Exti.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\EXTI\Exti.c</FilePath>
+            </File>
+            <File>
+              <FileName>global.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Global\global.c</FilePath>
             </File>
           </Files>
         </Group>

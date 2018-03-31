@@ -2,6 +2,8 @@
 #include "Exti.h"
 #include "config.h"
 #include "delay.h"
+#include 	"LCD12864.h"
+
 //按键初始化
 //按键挂在int0上
 void key_init() {
@@ -27,9 +29,9 @@ void Ext_INT0(void) interrupt INT0_VECTOR  //进中断时已经清除标志
     }
 }
 #define Submit P00
-#define key1 P11
-#define key2 P13
-#define key3 P13
+#define key1 P01
+#define key2 P02
+#define key3 P03
 
 unsigned char datas[3]={0};
 void mutiKeyDemo(void){
@@ -38,6 +40,7 @@ void mutiKeyDemo(void){
 			delay_ms(hold_time);
 			if(key1==0){
 				datas[0]++;
+				print_lcd12864("key1\n");
 			}
 			while(key1==0);
 		}
@@ -45,6 +48,7 @@ void mutiKeyDemo(void){
 			delay_ms(hold_time);
 			if(key2==0){
 				datas[1]++;
+				print_lcd12864("key2\n");
 			}
 			while(key2==0);
 		}
@@ -52,6 +56,7 @@ void mutiKeyDemo(void){
 			delay_ms(hold_time);
 			if(key3==0){
 				datas[2]++;
+				print_lcd12864("key3\n");
 			}
 			while(key3==0);
 		}
